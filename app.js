@@ -10,6 +10,7 @@ const drawList = (listNumber, list) => {
   listCard.innerHTML = "";
 
   noteArray.forEach((elem, index) => {
+    debugger;
     if (elem.subject === listNumber) {
       listCard.innerHTML += `<div class="list-border"><div class="list__card_notes">
       <div class="note">
@@ -43,14 +44,49 @@ addNoteToDo.addEventListener("click" || "keyup", (event) => {
   if (event.code === "Enter" || event.type === "click") {
     event.preventDefault();
 
-    const form = document.querySelector("#formToDo"); // no
-    const list = event.target.closest(".list"); // универсально
-
+    const form = document.querySelector("#formToDo");
     const titleToDo = document.querySelector("#titleToDo").value;
     const descriptionToDo = document.querySelector("#descriptionToDo").value;
     const subject = "0";
+    const list = event.target.closest(".list");
 
     pushNoteArray(titleToDo, descriptionToDo, subject);
+
+    drawList(subject, list);
+
+    form.reset();
+  }
+});
+addNoteInProgress.addEventListener("click" || "keyup", (event) => {
+  if (event.code === "Enter" || event.type === "click") {
+    event.preventDefault();
+
+    const form = document.querySelector("#formInProgress");
+    const titleInProgress = document.querySelector("#titleInProgress").value;
+    const descriptionInProgress = document.querySelector(
+      "#descriptionInProgress"
+    ).value;
+    const subject = "1";
+    const list = event.target.closest(".list");
+
+    pushNoteArray(titleInProgress, descriptionInProgress, subject);
+
+    drawList(subject, list);
+
+    form.reset();
+  }
+});
+addNoteDone.addEventListener("click" || "keyup", (event) => {
+  if (event.code === "Enter" || event.type === "click") {
+    event.preventDefault();
+
+    const form = document.querySelector("#formDone");
+    const titleDone = document.querySelector("#titleDone").value;
+    const descriptionDone = document.querySelector("#descriptionDone").value;
+    const subject = "2";
+    const list = event.target.closest(".list");
+
+    pushNoteArray(titleDone, descriptionDone, subject);
 
     drawList(subject, list);
 
