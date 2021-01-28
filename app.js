@@ -1,9 +1,15 @@
-const todo = document.querySelector("#todo");
-const inProgress = document.querySelector("#inprogress");
-const done = document.querySelector("#done");
-const deleted = document.querySelector("#deleted");
+const tasker = document.querySelector(".tasker");
 
-noteArray = [];
+const modal = document.querySelector(".modal");
+const inputTitle = document.querySelector("#modal-title");
+const inputDescription = document.querySelector("#modal-description");
+let inputSubject = 0;
+let inputList = 0;
+// const btnModalClose = document.querySelector("#btnModalClose");
+// const btnModalApply = document.querySelector("#btnModalApply");
+
+let noteArray = [];
+let storageIndex = 0;
 
 const drawList = (listNumber, list) => {
   const listCard = list.querySelector(".list__card");
@@ -19,14 +25,14 @@ const drawList = (listNumber, list) => {
       <div class="note">
         <p>
           Description:
-          <span class="note-name">${elem.description}</span>
+          <span class="note-description">${elem.description}</span>
         </p>
       </div>
     </div>
     <div class="block-buttons">
-      <div class="button-note button-edit" id="buttonEdit"></div>
-      <div class="button-note button-next" id="buttonNext"></div>
-      <div class="button-note button-remove" id="buttonRemove"></div>
+      <div class="button-note button-edit"></div>
+      <div class="button-note button-next"></div>
+      <div class="button-note button-remove"></div>
     </div></div>`;
     }
   });
@@ -91,5 +97,65 @@ addNoteDone.addEventListener("click" || "keyup", (event) => {
     drawList(subject, list);
 
     form.reset();
+  }
+});
+
+const openModal = () => (modal.style.display = "block");
+
+const closeModal = () => {
+  modal.style.display = "none";
+};
+
+const editNote = (event) => {
+  const listCard = event.target.closest(".list-border");
+  const list = event.target.closest(".list");
+  const title = listCard.querySelector(".note-name").textContent;
+  const description = listCard.querySelector(".note-description").textContent;
+
+  inputTitle.value = title;
+  inputDescription.value = description;
+
+  storageIndex = noteArray.findIndex(
+    (elem) => elem.title === title && elem.description === description
+  );
+  inputSubject = noteArray[storageIndex].subject;
+  inputList = list;
+
+  openModal();
+};
+const editApply = (event) => {
+  event.preventDefault();
+
+  noteArray.splice(storageIndex, 1, {
+    title: inputTitle.value,
+    description: inputDescription.value,
+    subject: inputSubject,
+  });
+
+  closeModal();
+
+  drawList(inputSubject, inputList);
+};
+
+modal.addEventListener("click", (event) => {
+  event.preventDefault();
+  if (event.target.closest("#btnModalApply")) {
+    editApply(event);
+  } else if (
+    !event.target.closest(".modal__wrapper") ||
+    event.target.closest("#btnModalClose")
+  ) {
+    event.preventDefault();
+    closeModal();
+  }
+});
+
+tasker.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  if (event.target.closest(".button-edit")) {
+    editNote(event);
+  } else if (event.target.closest(".button-next")) {
+  } else if (event.target.closest(".button-remove")) {
   }
 });

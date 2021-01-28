@@ -57,6 +57,9 @@
 .note-name {
   word-break: break-all;
 }
+.note-description {
+  word-break: break-all;
+}
 
 .block-buttons {
   display: flex;
@@ -110,4 +113,31 @@ input {
 
 .mrg-b-30 {
   margin: 0 20px 10px;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(149, 255, 232, 0.411);
+
+  display: none;
+}
+
+.modal__wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 36%;
+
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  padding: 1rem;
+  background-color: rgb(0, 102, 109);
+}
+
+.modal__input {
+  width: 90%;
 }
