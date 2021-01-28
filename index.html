@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>TO DO list</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="tasker">
+        <div class="list">
+          <div class="list__header">To Do</div>
+          <div class="list__card" id="todo"></div>
+          <form class="form" id="formToDo">
+            <input
+              type="text"
+              class="input mrg-b-30"
+              id="titleToDo"
+              placeholder="Title:"
+            />
+            <input
+              type="text"
+              class="input mrg-b-30"
+              id="descriptionToDo"
+              placeholder="Description:"
+            />
+            <button type="submit" id="addNoteToDo" class="button mrg-b-30">
+              Submit
+            </button>
+          </form>
+        </div>
+        <div class="list">
+          <div class="list-header">In Progress</div>
+          <div class="list-card" id="inProgress"></div>
+          <form class="form" id="formInProgress">
+            <input
+              type="text"
+              class="input mrg-b-30"
+              id="titleInProgress"
+              placeholder="Title:"
+            />
+            <input
+              type="text"
+              class="input mrg-b-30"
+              id="descriptionInProgress"
+              placeholder="Description:"
+            />
+            <button
+              type="submit"
+              id="addNoteInProgress"
+              class="button mrg-b-30"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+        <div class="list">
+          <div class="list-header">Done</div>
+          <div class="list-card" id="done"></div>
+          <form class="form" id="formDone">
+            <input
+              type="text"
+              class="input mrg-b-30"
+              id="titleDone"
+              placeholder="Title:"
+            />
+            <input
+              type="text"
+              class="input mrg-b-30"
+              id="descriptionDone"
+              placeholder="Description:"
+            />
+            <button type="submit" id="addNoteDone" class="button mrg-b-30">
+              Submit
+            </button>
+          </form>
+        </div>
+        <div class="list">
+          <div class="list-header">Deleted</div>
+          <div class="list-card" id="deleted"></div>
+          <form class="form" id="formDeleted">
+            <input
+              type="text"
+              class="input mrg-b-30"
+              id="titleDeleted"
+              placeholder="Title:"
+            />
+            <input
+              type="text"
+              class="input mrg-b-30"
+              id="descriptionDeleted"
+              placeholder="Description:"
+            />
+            <button type="submit" id="addNoteDeleted" class="button mrg-b-30">
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
